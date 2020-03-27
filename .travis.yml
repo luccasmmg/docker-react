@@ -1,24 +1,21 @@
 sudo: required
 services:
-  - docker
-
+- docker
 before_install:
-  - docker build -t luccasmmg/docker-react -f Dockerfile.dev .
-
+- docker build -t luccasmmg/docker-react -f Dockerfile.dev .
 script:
-  - docker run -e CI=true luccasmmg/docker-react npm run test -- --coverage
-
+- docker run -e CI=true luccasmmg/docker-react npm run test -- --coverage
 deploy:
   edge: true
   provider: elasticbeanstalk
-  region: "sa-east-1"
-  app: "docker-react"
-  env: "DockerReact"
-  bucket_name: "elasticbeanstalk-sa-east-1-821626484152"
-  bucket_path: "docker-react"
+  region: sa-east-1
+  app: docker-react
+  env: DockerReact
+  bucket_name: elasticbeanstalk-sa-east-1-821626484152
+  bucket_path: docker-react
   on:
     branch: master
   access_key_id:
-    secure: "$AWS_ACCESS_KEY"
+    secure: a4xo+Xe8oSrRjLBDRCMGO2hSZon/0aanVTROpUSnrEt1jO3TQn8W54krmSXKOgoAGtbhwRQsCFOsIAUaqbjB8a9RB5h9NzUuS+0mX5Yju0622cinaLNdBQq67WB1ttE5DGw6r/XBkCIDn+ocvlzEIPV1+JHkPhj5qCp9MX66GnWzH5aWjb55eNQ5W03I5fY79N3FFFqeUuF2w6XaeR9Sio3UG1+f20i+ipRaq3vmS4h3Ebu1pA/JZmKHDPIBy+hbaddovM0QzCTvCyzZCDSNyRuGYCPfJnDVCNmZGMSy5EPPvs0E2UnagzMfsdAKbsfhdIoZPiTChvHDzqdT2Pa2068t0yjtYZkBaLlni+vQjDEU34ar5lytrqtaj6CWcq4nJbN49j7n8LFD9kCziRgIQ0Mm7BFkBUbmyoBD45pBtETq/sn/rpSeTD6J2cItvWVmthb4LLg5ff6J4XA+YcVb1f+fDt810MeWyJsV8ArseEE3Uhu/4eN1Tlkxzi2IAu8yQXX2aAGUVMgCvrP4tyVocSvqbkfKnl0YK1Mt+iqHISVyrFzdWSDhajGIHDxSV6bGB8aAP1GYfmTn1bPYEa9Kr6z3YN0wD0Vco2iXkQ+kJGqDQRFaMtpkM40laY9pq58EbXEJAMYK09mVEoFq/XJz2zIgm156YpgBhqhyZglZrog=
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: nTq1JCKfHCW3e1WL71STylOtIFq3GhE8Zs5USHVufe99OVEJos2hO3OCdR5ha6hgSkzI0BxiweJjzQsv982byt9jLN/8+/BklUWlY/0QIkAs2uYwvgE8/R/GgzDDtIuM4+h5ONfe/jMHS0cRItr4A1o+GcS5K1ExDDWCjMJjpcezfNf4YLKjlsA3/jweQ4gg5bbcdG+VuQDqZ9CxdV7+EcFuG030jn98wfN8h2+0BasXDVv0jHoQFO+64y79dOOamcuTuxaKGj2u0ztQqw0LR3IZGTz+BtIvqIyU6BLS/fsZpgvJXYlnGO7x9OPU0HDGF1m+L8sD/icwM/h8OIxoJbY0rc/XP7bDBTkc9SZ1VgEEQz3Ba8TZE3wuNVO/49RqSgsCfXIi+SNrxbjSJ1SY9PnDgBHsCJhnymjgAUeD2P7ZfifVlqxqJYx+sV2BC/xKTEtD7YUuiKyJJ7czOrWzltw9WxqyGiCDRRdCf1jalCn290D4DQRy8Nbfqsh+YZe7WDWFNnbFzAVGxRP/XhoP/en4XDxyICm30LHFB6gNPxDac7G3zVdptlAtel21xPcZKHuJQKCCBuRXS20NBjn1r8Hw56iHEWi7KoBsewzMuRaURXkUuG2IQUUw/DbClvzRQQOwEkeLFt4bhl2X/q8rneUbg34SwTiq1dih46x3nIs=
